@@ -1,0 +1,101 @@
+.body {
+    position: relative;
+}
+.nav {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+
+    &__links.open {
+        height: calc(100vh - 96px);
+    }
+    
+
+    &__links {
+        position: absolute;
+        top: 96px;
+        right: 0;
+        left: 0;
+        // min-height: calc(100vh - 96px);
+        height: 0;
+        background: $primary-bg-black-opacity;
+        overflow-y: hidden;
+
+        &__ul {
+            padding: 20px 25px;
+            background: $primary-black;
+        }
+
+        &__li {
+            display: block;
+            // padding: 0 8px;
+            padding: 18px 8px;
+            list-style-type: none;
+            letter-spacing: 2px;
+            font-size: rem(24px);
+            text-transform: uppercase;
+    
+            a {
+                color: $primary-white;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    .btnOpen, .btnClose, .btnOpen.visible, .btnClose.visible {
+        display: none;
+        cursor: pointer;
+    }
+
+    .btnOpen.visible, .btnClose.visible {
+        display: block;
+    }
+
+    @media (min-width: 768px) {
+
+        &__links.open {
+            height: inherit;
+        }
+
+        &__links {
+            position: relative;
+            top: 0;
+            bottom: 0px;
+            right: 0;
+            left: 0;
+            display: block;
+            height: inherit;
+            background: inherit;
+
+            &__ul { 
+                height: inherit;
+                background: inherit;
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+            
+            &__li {
+                display: inline-block;
+                font-size: rem(14px);
+        
+                a {
+                    color: $secondary-dark-grey;
+                    transition: 0.3s;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        
+
+        .btnOpen, .btnClose, .btnOpen.visible, .btnClose.visible {
+            display: none;
+        }
+    }
+}

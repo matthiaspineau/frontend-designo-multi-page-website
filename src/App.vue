@@ -1,32 +1,51 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <!-- Navbar -->
+    <div id="nav" class="container nav">
+      <!-- Logo site -->
+      <h1>
+        <router-link to="/">
+          <img :src="require('@/assets/images/logo_designo.png')" alt="logo designo">
+        </router-link>
+      </h1>
+      <!-- Button nav -->
+      <div>
+        <img :src="require('@/assets/images/icon_menu.svg')" alt="icon menu" 
+          class="btnOpen visible"
+          @click="openMenu">
+          <img :src="require('@/assets/images/icon_close.svg')" alt="icon menu" 
+          class="btnClose"
+          @click="closeMenu">
+      </div>
+      <!-- Links -->
+      <div class="nav__links" @click="closeMenu">
+        <ul class="nav__links__ul">
+          <li class="nav__links__li"><router-link to="/">our compagny</router-link></li>
+          <li class="nav__links__li"><router-link to="/about">locations</router-link></li>
+          <li class="nav__links__li"><router-link to="/about">contact</router-link></li>
+        </ul>
+      </div>
+      
     </div>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+export default {
+   methods: {
+    openMenu() {
+      document.querySelector('.nav__links').classList.add('open');
+      document.querySelector('.btnOpen').classList.remove('visible');
+      document.querySelector('.btnClose').classList.add('visible');
+    },
+    closeMenu() {
+      document.querySelector('.nav__links').classList.remove('open');
+      document.querySelector('.btnOpen').classList.add('visible');
+      document.querySelector('.btnClose').classList.remove('visible');
     }
-  }
+   }
 }
-</style>
+</script>
+
+<style src="@/assets/scss/app.scss" lang="scss"></style>
